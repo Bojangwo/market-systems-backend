@@ -23,7 +23,15 @@ exports.register = async (req, res) => {
       password: hashedPassword
     });
 
-    res.status(201).json(user);
+    res.status(201).json({
+    message: "User registered successfully",
+     user: {
+     id: user._id,
+     fullname: user.fullname,
+     email: user.email,
+     role: user.role
+  }
+});
 
   } catch (error) {
     res.status(500).json({
@@ -38,7 +46,9 @@ exports.login = async (req, res) => {
 
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User
+  .findOne({ email })
+  .select("+password");
 
     if (!user) {
       return res.status(400).json({
