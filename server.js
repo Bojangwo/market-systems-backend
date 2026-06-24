@@ -37,7 +37,7 @@ app.use(cors());
 app.use(
   cors({
     origin:
-    "https://organic-market.vercel.app",
+    "https://market-systems-frontend.vercel.app",
     credentials: true,
   })
 );
