@@ -34,7 +34,13 @@ connectDB();
 
 app.use(cors());
 
-app.use(express.json());
+app.use(
+  cors({
+    origin:
+    "https://organic-market.vercel.app",
+    credentials: true,
+  })
+);
 
 app.use(
   "/uploads",
