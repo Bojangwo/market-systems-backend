@@ -27,6 +27,7 @@ const adminRoutes =
 
 const reviewRoutes =
   require("./routes/reviewRoutes");
+  
 
 const app = express();
 
@@ -41,6 +42,9 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   "/uploads",
